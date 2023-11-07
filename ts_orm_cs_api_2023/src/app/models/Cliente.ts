@@ -1,0 +1,12 @@
+import {Entity, Column, ChildEntity} from 'typeorm';
+import Pessoa from './Pessoa';
+
+@ChildEntity()
+export default class Cliente extends Pessoa {
+    
+    
+    @Column('date', {nullable: true})
+    data_cadastro: Date;
+
+ 
+}
