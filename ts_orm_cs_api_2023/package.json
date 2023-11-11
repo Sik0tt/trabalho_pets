@@ -1,7 +1,6 @@
 {
   "name": "trabalho_pets",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon --exec ts-node src/index.ts"
@@ -22,11 +21,12 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "4.17.1",
+    "express": "^4.17.1",
     "jest": "27.4.3",
     "pg": "8.7.1",
     "reflect-metadata": "0.1.13",
     "ts-jest": "27.1.0",
     "typeorm": "0.2.38"
-  }
+  },
+  "description": ""
 }

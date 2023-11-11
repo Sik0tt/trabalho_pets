@@ -5,10 +5,10 @@ import {Entity, Column, PrimaryColumn} from 'typeorm';
 class Pagamento {
 
     @PrimaryColumn('text')
-    cartão_débito: string ;
+    cartao_debito: string ;
 
     @Column('text')
-    cartão_crédito: string;
+    cartao_credito: string;
 
     @Column('text')
     dinheiro: string;

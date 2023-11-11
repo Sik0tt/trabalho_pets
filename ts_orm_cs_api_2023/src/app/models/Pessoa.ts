@@ -25,7 +25,7 @@ export default abstract class Pessoa {
     data_nascimento: Date;
 
     @Column("varchar", { length: 100 })
-    endereço: string;
+    endereco: string;
     
     @Column("varchar", { length: 8 })
     cep: string;

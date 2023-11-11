@@ -9,7 +9,7 @@ class Venda {
     id: number
 
     @Column('text')
-    observação: string;
+    observacao: string;
 
     @Column('float')
     valor_total: Number;
@@ -19,14 +19,14 @@ class Venda {
 
      //associação (flecha)
      @ManyToOne(type => Pagamento)
-     @JoinColumn({name: "pagamento_dinheiro", referencedColumnName: "dinheiro"})
+     @JoinColumn({name: "pagamento_cartao_debito", referencedColumnName: "cartao_debito"})
      Pagamento: Pagamento; 
 
     //agregacao (losango não preenchido)
     @ManyToMany(() => Pet)
     @JoinTable({name : "tb_venda_pet", 
-                joinColumn: {name: "venda_observacao", 
-                             referencedColumnName: "observacao"}, 
+                joinColumn: {name: "venda_id", 
+                             referencedColumnName: "id"}, 
                 inverseJoinColumn: {name: "pet_id", 
                                     referencedColumnName: "id"}})
     Pet: Pet[];

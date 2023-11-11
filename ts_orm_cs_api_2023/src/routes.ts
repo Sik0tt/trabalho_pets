@@ -1,31 +1,33 @@
 import {Router} from 'express';
-import EnderecoController from './app/controllers/FuncionarioController';
-import LocalController from './app/controllers/PessoaController';
-import PatenteController from './app/controllers/ClienteController';
-import JogadorController from './app/controllers/VendaController';
+import ClienteController from './app/controllers/ClienteController';
+import FuncionarioController from './app/controllers/FuncionarioController';
+import PessoaController from './app/controllers/PessoaController';
+import VendaController from './app/controllers/VendaController';
 
 const router = Router();
 
-//http://localhost:3000/endereco/list
-router.get('/endereco/list', EnderecoController.list);
-router.post('/endereco/store', EnderecoController.store)
-router.delete('/endereco/delete', EnderecoController.delete)
+//http://localhost:3000/Cliente/list
+router.get('/cliente/list', ClienteController.list);
+router.delete('/cliente/delete', ClienteController.delete)
 
 
 //http://localhost:3000/local/list
-router.get('/local/list', LocalController.list);
+router.get('/funcionario/list', FuncionarioController.list);
 
 
 
-router.post('/loginjogador', JogadorController.login);
-router.get('/jogador/:nickname', JogadorController.find);
-router.get('/listjogador', JogadorController.list);
-router.get('/deletejogador/:nickname', JogadorController.delete);
-router.post('/updatejogador/', JogadorController.update);
-router.post('/insertjogador/', JogadorController.store);
+router.get('/pessoa/list', PessoaController.list);
 
 
-router.get('/listpatente', PatenteController.list);
+
+
+//http://localhost:3000/venda/list
+router.get('/listvenda', VendaController.list);
+router.get('/deletevenda/:id', VendaController.delete);
+router.post('/updatevenda/', VendaController.update);
+
+
+
 
 
 
