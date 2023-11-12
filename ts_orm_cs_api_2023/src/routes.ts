@@ -11,14 +11,14 @@ const router = Router();
 
 
 router.get('/listcliente', ClienteController.list)
-router.post('/cliente/store', ClienteController.store)
+router.post('/storecliente', ClienteController.store)
 router.delete('/deletecliente/:cpf', ClienteController.delete)
 router.put('/updatecliente/:cpf', ClienteController.update)
 
 
 
 router.get('/listfuncionario', FuncionarioController.list)
-router.post('/funcinario/store', FuncionarioController.store)
+router.post('/funcionario/store', FuncionarioController.store)
 router.delete('/deletefuncionario/cpf', FuncionarioController.delete)
 router.put('/updatefuncionario/cpf', FuncionarioController.update)
 

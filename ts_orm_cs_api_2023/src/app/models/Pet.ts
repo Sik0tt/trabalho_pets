@@ -1,5 +1,5 @@
-import {Entity, Column, PrimaryColumn, PrimaryGeneratedColumn} from 'typeorm';
-
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
+import Raca from './Raca'
 
 @Entity('tb_pet')
 class Pet {
@@ -13,6 +13,9 @@ class Pet {
     @Column('int')
     quantidade: Number;
 
-    
+    @ManyToOne(type => Raca)
+     @JoinColumn({name: "raca_id", referencedColumnName: "id"})
+     Raca: Raca; 
+
 }
 export default Pet;
