@@ -1,5 +1,5 @@
-import {Entity, Column, PrimaryColumn} from 'typeorm';
-
+import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn} from 'typeorm';
+import Pet from '../models/Pet'
 
 @Entity('tb_raca')
 class Raca {
@@ -19,5 +19,8 @@ class Raca {
     @Column('text')
     rottweiler: string;
 
+    @ManyToOne(type => Pet)
+     @JoinColumn({name: "pet_id", referencedColumnName: "id"})
+     Pet: Pet; 
 }
 export default Raca;

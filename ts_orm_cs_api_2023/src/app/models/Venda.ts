@@ -1,6 +1,8 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, ManyToOne, JoinColumn} from 'typeorm';
 import Pet from '../models/Pet';
 import Pagamento from '../models/Pagamento';
+import Cliente from '../models/Cliente'
+import Funcionario from '../models/Funcionario'
 
 @Entity('tb_venda')
 class Venda {
@@ -21,6 +23,14 @@ class Venda {
      @ManyToOne(type => Pagamento)
      @JoinColumn({name: "pagamento_cartao_debito", referencedColumnName: "cartao_debito"})
      Pagamento: Pagamento; 
+
+     @ManyToOne(type => Cliente)
+     @JoinColumn({name: "cliente_cpf", referencedColumnName: "cpf"})
+     Cliente: Cliente; 
+
+     @ManyToOne(type => Funcionario)
+     @JoinColumn({name: "funcionario_cpf", referencedColumnName: "cpf"})
+     Funcionario: Funcionario;
 
     //agregacao (losango não preenchido)
     @ManyToMany(() => Pet)
