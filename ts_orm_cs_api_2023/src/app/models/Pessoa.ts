@@ -11,11 +11,11 @@ export default abstract class Pessoa {
     @Column("varchar", { length: 7 })
     rg: string;
 
-    @Column("varchar", { length: 7 })
+    @Column("varchar", { length: 100 })
     nome: string;
     
 
-    @Column("varchar", { length: 9  })
+    @Column("varchar", { length: 11  })
     numero_celular: string;
 
     @Column("varchar", { length: 100  })

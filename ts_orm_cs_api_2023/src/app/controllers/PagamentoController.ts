@@ -51,7 +51,29 @@ class PagamentoController{
         return res.json(p);
     }
 
-    
+    async store(req: Request, res: Response){
+
+        const repository = getRepository(Pagamento);//recupera o repositorio do jogador.
+
+        console.log(req.body);//imprime na saida padrão a mensagem recebida. Isso é apenas para teste...
+
+        const {cartao_debito} = req.body;//extrai os atributos nickname do corpo da mensagem.
+
+        const cartao_debitoExists = await repository.findOne({where : {cartao_debito}});//consulta na tabela se existe um registro com o mesmo nickname da mensagem.
+
+        if(cartao_debitoExists){
+
+            return res.sendStatus(409);//caso exista um registro, retorna 409 informando o conflito
+
+        }
+
+        const p = repository.create(req.body);//cria a entidade Jogador.
+
+        await repository.save(p);//efetiva a operacao de insert.
+
+        return res.json(p);//retorna o bojeto json no response.
+        
+    }
  
 
 

@@ -1,10 +1,13 @@
-import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
 import Pet from '../models/Pet'
 
 @Entity('tb_raca')
 class Raca {
 
-    @PrimaryColumn('text')
+    @PrimaryGeneratedColumn()
+    id: number
+    
+    @Column('text')
     pastor_alemao: string ;
 
     @Column('text')

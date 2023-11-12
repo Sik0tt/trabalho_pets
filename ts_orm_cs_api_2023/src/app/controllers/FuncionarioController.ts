@@ -51,7 +51,29 @@ class FuncionarioController{
         return res.json(f);
     }
 
-    
+    async store(req: Request, res: Response){
+
+        const repository = getRepository(Funcionario);//recupera o repositorio do jogador.
+
+        console.log(req.body);//imprime na saida padrão a mensagem recebida. Isso é apenas para teste...
+
+        const {cpf} = req.body;//extrai os atributos nickname do corpo da mensagem.
+
+        const cpfExists = await repository.findOne({where : {cpf}});//consulta na tabela se existe um registro com o mesmo nickname da mensagem.
+
+        if(cpfExists){
+
+            return res.sendStatus(409);//caso exista um registro, retorna 409 informando o conflito
+
+        }
+
+        const f = repository.create(req.body);//cria a entidade Jogador.
+
+        await repository.save(f);//efetiva a operacao de insert.
+
+        return res.json(f);//retorna o bojeto json no response.
+        
+    }
  
 
 

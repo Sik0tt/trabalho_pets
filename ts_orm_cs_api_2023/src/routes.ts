@@ -9,38 +9,45 @@ import VendaController from './app/controllers/VendaController';
 
 const router = Router();
 
-//http://localhost:3000/Cliente/list
+
 router.get('/listcliente', ClienteController.list)
-router.delete('/deletecliente/:id', ClienteController.delete)
-router.post('/updatecliente', ClienteController.update)
+router.post('/cliente/store', ClienteController.store)
+router.delete('/deletecliente/:cpf', ClienteController.delete)
+router.put('/updatecliente/:cpf', ClienteController.update)
 
 
-//http://localhost:3000/local/list
+
 router.get('/listfuncionario', FuncionarioController.list)
-router.delete('/deletefuncionario/id', FuncionarioController.delete)
-router.post('/updatefuncionario', FuncionarioController.update)
+router.post('/funcinario/store', FuncionarioController.store)
+router.delete('/deletefuncionario/cpf', FuncionarioController.delete)
+router.put('/updatefuncionario/cpf', FuncionarioController.update)
 
 
-router.get('/pessoa/list', PessoaController.list)
-router.delete('/deletepessoa/:id', PessoaController.delete)
-router.post('/updatepessoa', PessoaController.update)
+router.get('/listpessoa', PessoaController.list)
+router.post('/pessoa/store', PessoaController.store)
+router.delete('/deletepessoa/:cpf', PessoaController.delete)
+router.put('/updatepessoa/:cpf', PessoaController.update)
 
 router.get('/listpagamento', PagamentoController.list)
-router.delete('/deletepagamento/:id', PagamentoController.delete)
-router.post('/updatepagamento', PagamentoController.update)
+router.post('/pagamento/store', PagamentoController.store)
+router.delete('/deletepagamento/:cartao_debito', PagamentoController.delete)
+router.put('/updatepagamento/cartao_debito', PagamentoController.update)
 
 router.get('/listpet', PetController.list)
+router.post('/pet/store', PetController.store)
 router.delete('/deletepet/:id', PetController.delete)
-router.post('/updatepet', PetController.update)
+router.put('/updatepet/:id', PetController.update)
 
 router.get('/listraca', RacaController.list)
+router.post('/raca/store', RacaController.store)
 router.delete('/deleteraca/:id', RacaController.delete)
-router.post('/updateraca', RacaController.update)
+router.put('/updateraca/:id', RacaController.update)
 
 //http://localhost:3000/venda/list
 router.get('/listvenda', VendaController.list);
+router.post('/venda/store', VendaController.store)
 router.get('/deletevenda/:id', VendaController.delete);
-router.post('/updatevenda/', VendaController.update);
+router.put('/updatevenda/:id', VendaController.update);
 
 
 
