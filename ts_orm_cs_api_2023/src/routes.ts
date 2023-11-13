@@ -28,9 +28,9 @@ router.get('/findpessoa/:cpf', PessoaController.find);
 
 router.get('/listpagamento', PagamentoController.list)
 router.post('/pagamento/store', PagamentoController.store)
-router.delete('/deletepagamento/:cartao_debito', PagamentoController.delete)
-router.put('/updatepagamento/cartao_debito', PagamentoController.update)
-router.get('/findpagamento/:cartao_debito', PagamentoController.find);
+router.delete('/deletepagamento/:id', PagamentoController.delete)
+router.put('/updatepagamento/:id', PagamentoController.update)
+router.get('/findpagamento/:id', PagamentoController.find);
 
 router.get('/listpet', PetController.list)
 router.post('/pet/store', PetController.store)
@@ -48,7 +48,7 @@ router.get('/findraca/:id', RacaController.find);
 router.get('/listvenda', VendaController.list);
 router.post('/venda/store', VendaController.store)
 router.get('/deletevenda/:id', VendaController.delete);
-router.put('/updatevenda/:id', VendaController.update);
+router.put('/updatevenda', VendaController.update);
 router.get('/findvenda/:id', VendaController.find);
 
 

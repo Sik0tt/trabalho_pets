@@ -14,8 +14,7 @@ class Pet {
     quantidade: Number;
 
     @ManyToOne(type => Raca)
-     @JoinColumn({name: "raca_id", referencedColumnName: "id"})
-     Raca: Raca; 
-
+    @JoinColumn({name: "raca_id", referencedColumnName: "id"})
+    Raca: Raca; 
 }
 export default Pet;

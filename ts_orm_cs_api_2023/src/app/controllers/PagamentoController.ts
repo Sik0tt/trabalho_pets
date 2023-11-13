@@ -17,13 +17,13 @@ class PagamentoController{
 
         const repository = getRepository(Pagamento);//recupera o repositorio do venda.
         
-        const cartao_debito = req.params.cartao_debito;
+        const id = req.params.id;
         
-        const cartao_debitoExists = await repository.findOne({where :{cartao_debito}});//consulta na tabela se existe um registro com o mesmo id da mensagem.
+        const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id da mensagem.
 
-        if(cartao_debitoExists){
+        if(idExists){
         
-            await repository.remove(cartao_debitoExists);//caso exista, então aplica a remocao fisica. (corrigir erro no pdf 11)
+            await repository.remove(idExists);//caso exista, então aplica a remocao fisica. (corrigir erro no pdf 11)
             return res.sendStatus(204);//retorna o coigo 204.
         
         }else{
@@ -36,11 +36,11 @@ class PagamentoController{
     
         const repository = getRepository(Pagamento);//recupera o repositorio do venda.
     
-        const {cartao_debito} = req.body;//extrai os atributos id do corpo da mensagem
+        const {id} = req.body;//extrai os atributos id do corpo da mensagem
     
-        const cartao_debitoExists = await repository.findOne({where :{cartao_debito}});//consulta na tabela se existe um registro com o mesmo id.
+        const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id.
         
-        if(!cartao_debitoExists){
+        if(!idExists){
             return res.sendStatus(404);
         }
         
@@ -57,11 +57,11 @@ class PagamentoController{
 
         console.log(req.body);//imprime na saida padrão a mensagem recebida. Isso é apenas para teste...
 
-        const {cartao_debito} = req.body;//extrai os atributos nickname do corpo da mensagem.
+        const {id} = req.body;//extrai os atributos nickname do corpo da mensagem.
 
-        const cartao_debitoExists = await repository.findOne({where : {cartao_debito}});//consulta na tabela se existe um registro com o mesmo nickname da mensagem.
+        const idExists = await repository.findOne({where : {id}});//consulta na tabela se existe um registro com o mesmo nickname da mensagem.
 
-        if(cartao_debitoExists){
+        if(idExists){
 
             return res.sendStatus(409);//caso exista um registro, retorna 409 informando o conflito
 
@@ -78,9 +78,9 @@ class PagamentoController{
     async find(req: Request, res: Response){
 
         const repository = getRepository(Pagamento);
-        const cartao_debito = req.params.cartao_debito;
+        const id = req.params.id;
 
-        const p = await repository.findOne({where : {"cartao_debito" : cartao_debito}});
+        const p = await repository.findOne({where : {"id" : id}});
 
         if(p){
             return res.json(p)

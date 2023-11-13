@@ -21,7 +21,7 @@ class Venda {
 
      //associação (flecha)
      @ManyToOne(type => Pagamento)
-     @JoinColumn({name: "pagamento_cartao_debito", referencedColumnName: "cartao_debito"})
+     @JoinColumn({name: "pagamento_id", referencedColumnName: "id"})
      Pagamento: Pagamento; 
 
      @ManyToOne(type => Cliente)

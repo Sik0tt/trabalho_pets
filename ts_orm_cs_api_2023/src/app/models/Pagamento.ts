@@ -1,20 +1,16 @@
-import {Entity, Column, PrimaryColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 
 
 @Entity('tb_pagamento')
 class Pagamento {
 
-    @PrimaryColumn('text')
-    cartao_debito: string ;
+    @PrimaryGeneratedColumn()
+    id: number
 
     @Column('text')
-    cartao_credito: string;
+    forma_pagamento: string ;
 
-    @Column('text')
-    dinheiro: string;
-
-    @Column('text')
-    boleto: string;
+   
 
 }
 export default Pagamento;
