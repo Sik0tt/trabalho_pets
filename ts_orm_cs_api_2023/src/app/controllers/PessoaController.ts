@@ -76,7 +76,19 @@ class PessoaController{
         
     }
 
+    async find(req: Request, res: Response){
 
+        const repository = getRepository(Pessoa);
+        const cpf = req.params.cpf;
+
+        const p = await repository.findOne({where : {"cpf" : cpf}});
+
+        if(p){
+            return res.json(p)
+        }else{
+            return res.sendStatus(204);
+        }
+    }
 
 }
 

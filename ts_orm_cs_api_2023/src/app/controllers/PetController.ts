@@ -76,7 +76,19 @@ class PetController{
         
     }
 
+    async find(req: Request, res: Response){
 
+        const repository = getRepository(Pet);
+        const id = req.params.id;
+
+        const p = await repository.findOne({where : {"id" : id}});
+
+        if(p){
+            return res.json(p)
+        }else{
+            return res.sendStatus(204);
+        }
+    }
 
 }
 

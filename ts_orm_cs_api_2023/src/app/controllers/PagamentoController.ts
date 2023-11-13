@@ -75,7 +75,19 @@ class PagamentoController{
         
     }
  
+    async find(req: Request, res: Response){
 
+        const repository = getRepository(Pagamento);
+        const cartao_debito = req.params.cartao_debito;
+
+        const p = await repository.findOne({where : {"cartao_debito" : cartao_debito}});
+
+        if(p){
+            return res.json(p)
+        }else{
+            return res.sendStatus(204);
+        }
+    }
 
 
 }

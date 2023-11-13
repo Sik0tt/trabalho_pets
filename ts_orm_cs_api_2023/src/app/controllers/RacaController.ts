@@ -17,13 +17,13 @@ class RacaController{
 
         const repository = getRepository(Raca);//recupera o repositorio do venda.
         
-        const pastor_alemao = req.params.pastor_alemao;
+        const id = req.params.id;
         
-        const pastor_alemaoExists = await repository.findOne({where :{pastor_alemao}});//consulta na tabela se existe um registro com o mesmo id da mensagem.
+        const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id da mensagem.
 
-        if(pastor_alemaoExists){
+        if(idExists){
         
-            await repository.remove(pastor_alemaoExists);//caso exista, então aplica a remocao fisica. (corrigir erro no pdf 11)
+            await repository.remove(idExists);//caso exista, então aplica a remocao fisica. (corrigir erro no pdf 11)
             return res.sendStatus(204);//retorna o coigo 204.
         
         }else{
@@ -36,11 +36,11 @@ class RacaController{
     
         const repository = getRepository(Raca);//recupera o repositorio do venda.
     
-        const {pastor_alemao} = req.body;//extrai os atributos id do corpo da mensagem
+        const {id} = req.body;//extrai os atributos id do corpo da mensagem
     
-        const pastor_alemaoExists = await repository.findOne({where :{pastor_alemao}});//consulta na tabela se existe um registro com o mesmo id.
+        const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id.
         
-        if(!pastor_alemaoExists){
+        if(!idExists){
             return res.sendStatus(404);
         }
         
@@ -76,7 +76,19 @@ class RacaController{
         
     }
 
+    async find(req: Request, res: Response){
 
+        const repository = getRepository(Raca);
+        const id = req.params.id;
+
+        const r = await repository.findOne({where : {"id" : id}});
+
+        if(r){
+            return res.json(r)
+        }else{
+            return res.sendStatus(204);
+        }
+    }
 
 }
 

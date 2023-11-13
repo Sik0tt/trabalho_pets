@@ -75,7 +75,19 @@ class VendaController{
         
     }
  
+    async find(req: Request, res: Response){
 
+        const repository = getRepository(Venda);
+        const id = req.params.id;
+
+        const v = await repository.findOne({where : {"id" : id}});
+
+        if(v){
+            return res.json(v)
+        }else{
+            return res.sendStatus(204);
+        }
+    }
 
 
 }

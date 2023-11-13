@@ -11,7 +11,7 @@ export default class Funionario extends Pessoa {
     @Column("varchar", { length : 11 })
     pis: string;
 
-    @Column("varchar", { length: 8  })
+    @Column('text')
     senha: string;
 
    
