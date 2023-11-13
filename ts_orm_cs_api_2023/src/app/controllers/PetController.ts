@@ -36,7 +36,7 @@ class PetController{
     
         const repository = getRepository(Pet);//recupera o repositorio do venda.
     
-        const {id} = req.body;//extrai os atributos id do corpo da mensagem
+        const id = req.params.id;//extrai os atributos id do corpo da mensagem
     
         const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id.
         
@@ -50,6 +50,7 @@ class PetController{
         
         return res.json(p);
     }
+
 
     
     async store(req: Request, res: Response){

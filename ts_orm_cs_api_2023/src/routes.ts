@@ -47,8 +47,7 @@ router.get('/findraca/:id', RacaController.find);
 //http://localhost:3000/venda/list
 router.get('/listvenda', VendaController.list);
 router.post('/venda/store', VendaController.store)
-router.get('/deletevenda/:id', VendaController.delete);
-router.put('/updatevenda', VendaController.update);
+router.put('/updatevenda/:id', VendaController.update);
 router.get('/findvenda/:id', VendaController.find);
 
 
