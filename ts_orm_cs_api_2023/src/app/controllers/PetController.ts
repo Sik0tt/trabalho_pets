@@ -9,7 +9,7 @@ class PetController{
 
     async list(req: Request, res: Response){
         const repository = getRepository(Pet);
-        const lista = await repository.find();
+        const lista = await repository.createQueryBuilder('tb_pet').innerJoinAndSelect("tb_pet.Raca", "Raca").getMany();
         return res.json(lista);
     }
 

@@ -36,7 +36,7 @@ class PagamentoController{
     
         const repository = getRepository(Pagamento);//recupera o repositorio do venda.
     
-        const {id} = req.body;//extrai os atributos id do corpo da mensagem
+        const id = req.body.id;//extrai os atributos id do corpo da mensagem
     
         const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id.
         

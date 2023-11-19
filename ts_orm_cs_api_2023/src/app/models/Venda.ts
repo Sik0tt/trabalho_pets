@@ -21,15 +21,15 @@ class Venda {
 
      //associação (flecha)
      @ManyToOne(type => Pagamento)
-     @JoinColumn({name: "pagamento_id", referencedColumnName: "id"})
+     @JoinColumn({name: "Pagamento", referencedColumnName: "id"})
      Pagamento: Pagamento; 
 
      @ManyToOne(type => Cliente)
-     @JoinColumn({name: "cliente_cpf", referencedColumnName: "cpf"})
+     @JoinColumn({name: "Cliente", referencedColumnName: "cpf"})
      Cliente: Cliente; 
 
      @ManyToOne(type => Funcionario)
-     @JoinColumn({name: "funcionario_cpf", referencedColumnName: "cpf"})
+     @JoinColumn({name: "Funcionario", referencedColumnName: "cpf"})
      Funcionario: Funcionario;
 
     //agregacao (losango não preenchido)

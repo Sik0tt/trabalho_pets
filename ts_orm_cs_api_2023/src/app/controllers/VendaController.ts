@@ -9,17 +9,34 @@ class VendaController{
 
     async list(req: Request, res: Response){
         const repository = getRepository(Venda);
-        const lista = await repository.find();
+        const lista = await repository.createQueryBuilder('tb_venda').innerJoinAndSelect("tb_venda.Pagamento", "Pagamento").innerJoinAndSelect("tb_venda.Cliente", "Cliente").innerJoinAndSelect("tb_venda.Funcionario", "Funcionario").leftJoinAndSelect("tb_venda.Pet", "Pet").getMany();
         return res.json(lista);
     }
 
-    
+    async delete(req: Request, res: Response){
+
+        const repository = getRepository(Venda);//recupera o repositorio do venda.
+        
+        const id = req.params.id;
+        
+        const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id da mensagem.
+
+        if(idExists){
+        
+            await repository.remove(idExists);//caso exista, então aplica a remocao fisica. (corrigir erro no pdf 11)
+            return res.sendStatus(204);//retorna o coigo 204.
+        
+        }else{
+        
+            return res.sendStatus(404);//se nao encontrar Venda para remover, retorna o codigo 404.
+        }
+    }
 
     async update(req: Request, res: Response){
     
         const repository = getRepository(Venda);//recupera o repositorio do venda.
     
-        const id = req.params.body;//extrai os atributos id do corpo da mensagem
+        const id = req.body.id;//extrai os atributos id do corpo da mensagem
     
         const idExists = await repository.findOne({where :{id}});//consulta na tabela se existe um registro com o mesmo id.
         
@@ -71,6 +88,9 @@ class VendaController{
             return res.sendStatus(204);
         }
     }
+
+    
+   
 
 
 }
